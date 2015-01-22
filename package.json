@@ -1,0 +1,12 @@
+{
+  "name": "distance",
+  "version": "0.0.0",
+  "dependencies": {
+    "publisssh": "0.2.6",
+    "node-static": "0.7.6"
+  },
+  "scripts": {
+    "start": "static ./public",
+    "deploy": "publisssh ./public demo.zooniverse.org/distance"
+  }
+}

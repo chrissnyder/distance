@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Yo</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+    * {
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    canvas {
+      max-width: 100%;
+    }
+
+    video {
+      display: none;
+      height: 480px;
+      width: 640px;
+    }
+
+    #earth-canvas,
+    #moon-canvas {
+      height: 480px;
+      width: 640px;
+    }
+
+    .container {
+      align-items: stretch;
+      display: flex;
+      height: 100vh;
+    }
+
+    .earth,
+    .celestial-objects {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      width: 50%;
+    }
+
+    .celestial-objects > * {
+      height: 100vh;
+    }
+
+    .earth {
+      background-image: url(./images/earth.jpg);
+    }
+
+    .moon {
+      background-image: url(./images/moon.jpg);
+    }
+
+    .title {
+      color: #fff;
+      font-size: 72px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .go {
+      background: rgba(0, 0, 0, 0.7);
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+
+    .go button {
+      background: #53a949;
+      border: 0;
+      border-radius: 2px;
+      color: #fff;
+      height: 90px;
+      font-size: 44px;
+      font-weight: 700;
+      left: calc(50% - 130px);
+      letter-spacing: 3px;
+      outline: none;
+      position: absolute;
+      text-transform: uppercase;
+      top: calc(50% - 45px);
+      width: 260px;
+    }
+  </style>
+</head>
+<body>
+  <div class="go"><button class="start-button">Start!</button></div>
+  <div class="container">
+    <div class="earth">
+      <div class="title">Earth</div>
+      <canvas id="earth-canvas"></canvas>
+    </div>
+    <div class="celestial-objects">
+      <div class="moon celestial-object">
+        <div class="title">Moon</div>
+        <canvas id="moon-canvas"></canvas>
+      </div>
+
+      <div class="neo-one celestial-object">
+        <div class="title">Neo #1</div>
+        <canvas id="neo-one-canvas"></canvas>
+      </div>
+
+      <div class="neo-two celestial-object">
+        <div class="title">Neo #2</div>
+        <canvas id="neo-two-canvas"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <video></video>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="./main.js"></script>
+</body>
+</html>
