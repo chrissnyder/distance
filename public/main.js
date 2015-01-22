@@ -26,12 +26,8 @@ var startVideoCapture = function(video) {
 
   var scale = 1;
   var imageData = [];
-  var w, h;
-
+  var w = 640, h = 480;
   var fps = Math.floor(1000 / 30);
-
-  w = video.videoWidth * scale;
-  h = video.videoHeight * scale;
 
   normalizeDimensions(w, h, [earthCanvas, moonCanvas, neoOneCanvas, neoTwoCanvas]);
 
@@ -39,16 +35,8 @@ var startVideoCapture = function(video) {
     earthContext.drawImage(video, 0, 0, w, h);
     imageData.unshift(earthContext.getImageData(0, 0, w, h));
 
-    if (currentStream == 0) {
-      if ((imageData.length - 1) < fps * 2) return;
-      renderVideo(moonContext, imageData[(fps * 2)], w, h);  
-    } else if (currentStream == 1) {
-      if ((imageData.length - 1) < fps * 5) return;
-      renderVideo(neoOneCanvas, imageData[(fps * 5)], w, h);
-    } else if (currentStream == 2) {
-      if ((imageData.length - 1) < fps * 10) return;
-      renderVideo(neoTwoCanvas, imageData[(fps * 10)], w, h);
-    }
+    if ((imageData.length - 1) < fps * 2) return;
+    renderVideo(moonContext, imageData[(fps * 2)], w, h);
 
     imageData = imageData.slice(0, fps * 15);
 
