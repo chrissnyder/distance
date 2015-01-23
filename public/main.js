@@ -45,10 +45,16 @@ var startVideoCapture = function(video) {
 
 var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || false;
 
-window.addEventListener('DOMContentLoaded', function() {
+window.onload = function() {
+  var hide = function(e) {
+    this.style.display = 'none';
+  }
+
   var videoReceived = function(videoEl) {
     document.querySelector('.start-button').addEventListener('click', function(e) {
-      $('.go').fadeOut();
+      goEl = document.querySelector('.go');
+      goEl.addEventListener('transitionend', hide, true);
+      goEl.classList.add('fade-out');
       videoEl.play();
 
       startVideoCapture(videoEl);
@@ -57,7 +63,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var video = document.querySelector('video'),
       errBack = function(error) {
-        console.log("Video capture error: ", error.code); 
+        if (console) {
+          console.log("Video capture error: ", error.code);   
+        }
       };
   var videoObj = {video: true};
   if(navigator.getUserMedia) {
@@ -77,4 +85,4 @@ window.addEventListener('DOMContentLoaded', function() {
       videoReceived(video);
     }, errBack);
   }
-});
+}
